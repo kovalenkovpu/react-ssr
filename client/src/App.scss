@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  margin: 0 auto;
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inner-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  padding: 1em;
+  margin: 1em;
+  background-color: beige;
+  border: 1px solid #f3f3d3;
+
+  &:hover {
+    background-color: aliceblue;
+  }
+}
+
+.count {
+  text-align: center;
+}
