@@ -1,9 +1,8 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import express from "express";
 import fs from "fs";
 import * as React from "react";
 import ReactDOMServer from "react-dom/server";
-import { StaticRouterContext } from "react-router";
 import { StaticRouter } from 'react-router-dom';
 import { User } from "shared/pages/Users";
 
@@ -26,7 +25,6 @@ app.get("*", async (req, res) => {
     encoding: "utf8",
   });
   const initialData = { count: 20, users };
-  // const context: StaticRouterContext = { data } as any;
   const stringifiedApp = ReactDOMServer.renderToString(
     <StaticRouter location={req.url} context={{}}>
       <App initialData={initialData}/>
