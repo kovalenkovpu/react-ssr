@@ -1,9 +1,7 @@
 import * as React from "react";
 
-import "./App.scss";
-
-const App = () => {
-  const [count, setCount] = React.useState(0);
+const Home: React.FC<{ count?: number }> = ({ count: initialCount } = { count: 0 }) => {
+  const [count, setCount] = React.useState(Number(initialCount));
 
   return (
     <section className="wrapper">
@@ -27,4 +25,4 @@ const App = () => {
   );
 };
 
-export default App;
+export { Home };
