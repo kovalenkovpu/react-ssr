@@ -4,10 +4,33 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
+const commonLoaders = [
+  {
+    test: /\.(js|jsx|ts|tsx)$/,
+    exclude: /node_modules/,
+    use: 'ts-loader',
+  },
+  {
+    test: /\.s[ac]ss$/i,
+    use: [MiniCssExtractPlugin.loader, 'css-loader'],
+  },
+  {
+    test: /\.(png|jpg|svg|ico)$/i,
+    type: 'asset/resource',
+  },
+  {
+    test: /\.(woff|woff2|eot|ttf)$/,
+    use: ['url-loader?limit=100000'],
+  },
+];
+
 const browserConfig = {
   entry: './client/src/index.tsx',
+  // It is default, but is set here for better visibility
+  target: "web",
   output: {
     filename: 'index.[contenthash].js',
+    clean: true,
     publicPath: '/',
     path: path.resolve(__dirname, './client/build'),
   },
@@ -29,25 +52,7 @@ const browserConfig = {
     }),
   ],
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
-        use: 'ts-loader',
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-      {
-        test: /\.(png|jpg|svg|ico)$/i,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf)$/,
-        use: ['url-loader?limit=100000'],
-      },
-    ],
+    rules: commonLoaders,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
@@ -60,22 +65,13 @@ const serverConfig = {
   externals: [nodeExternals()],
   output: {
     path: path.resolve(__dirname, 'build'),
+    clean: true,
     publicPath: '/',
     filename: 'index.js',
   },
   plugins: [new MiniCssExtractPlugin()],
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
-        use: 'ts-loader',
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-    ],
+    rules: commonLoaders,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],

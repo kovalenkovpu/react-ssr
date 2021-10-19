@@ -39,9 +39,10 @@
   },
   "scripts": {
     "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
+    "watch:client": "webpack --mode=development -w",
     "watch:server": "nodemon ./build/index.js",
-    "watch:client": "rm -rf ./client/build && webpack --mode=development -w",
-    "start": "run-p watch:*"
+    "start": "npm run build:dev && run-p watch:*"
   },
   "keywords": [],
   "author": "",

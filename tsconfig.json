@@ -12,5 +12,6 @@
     "noEmitOnError": true,
     "skipLibCheck": true
   },
-  "include": ["client/**/*", "server/**/*"]
+  "include": ["client/**/*", "server/**/*"],
+  "exclude": ["client/build**/*", "build/**/*"]
 }

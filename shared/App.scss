@@ -11,22 +11,13 @@
   flex-direction: column;
 }
 
-.inner-wrapper {
+.navigation {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  padding-left: 0;
 }
 
-.button {
-  padding: 1em;
-  margin: 1em;
-  background-color: beige;
-  border: 1px solid #f3f3d3;
-
-  &:hover {
-    background-color: aliceblue;
-  }
-}
-
-.count {
-  text-align: center;
+.navigation-item {
+  list-style: none;
+  padding: 1rem;
 }
